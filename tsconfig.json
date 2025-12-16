@@ -2,7 +2,8 @@
   // Some typical compiler options
   "compilerOptions": {
     "target": "es2020",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "outDir": "./dist"
     // ...
   },
 
