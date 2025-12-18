@@ -1,5 +1,5 @@
 import User from "../../domain/Entities/user"
-import { UserRepository } from "../../domain/userRepository"
+import { UserRepository } from "../../domain/Repositories/userRepository"
 
 export class PostSQLUserRepository implements UserRepository {
   user: User
@@ -7,6 +7,7 @@ export class PostSQLUserRepository implements UserRepository {
     this.user = user
   }
   async create() {
-    // save User in a PostSQL way
+    setTimeout(() => {}, 1000)
+    console.log("user created")
   }
 }
