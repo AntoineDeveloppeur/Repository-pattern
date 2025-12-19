@@ -1,5 +1,5 @@
-import User from "../../domain/Entities/user"
-import { UserRepository } from "../../domain/Repositories/userRepository"
+import User from "../../domain/Entities/user.js"
+import { UserRepository } from "../../domain/Repositories/userRepository.js"
 
 export class PostSQLUserRepository implements UserRepository {
   user: User

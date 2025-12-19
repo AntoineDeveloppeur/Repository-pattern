@@ -1,4 +1,4 @@
-
+import { randomUUID } from "crypto"
 export default class User {
   id: string
   name: string
@@ -7,6 +7,6 @@ export default class User {
   constructor(user: { name: string; email: string }) {
     this.name = user.name
     this.email = user.email
-    this.id = 
+    this.id = randomUUID()
   }
 }

@@ -1,8 +1,10 @@
-import Routes from "express"
-import { createUser } from "../../application/useCases/CreateUser"
+import express, { Request, Response } from "express"
+import user from "../controllers/user.js"
+const router = express.Router()
 
-const routes = new Routes()
+router.post("/create", (req: Request, res: Response) => {
+  console.log("dans le router")
+  user.create(req, res)
+})
 
-routes.post("/create", (req: Request, res: Response) => createUser)
-
-export default routes
+export default router

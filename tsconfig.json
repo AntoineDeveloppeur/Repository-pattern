@@ -3,7 +3,9 @@
   "compilerOptions": {
     "target": "es2020",
     "moduleResolution": "node",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
     // ...
   },
 
