@@ -1,7 +1,12 @@
+
 export default class User {
   id: string
   name: string
   email: string
-  password: string
-  accessRight: "administrator" | "moderator" | "user"
+  accessRight: "administrator" | "moderator" | "user" = "user"
+  constructor(user: { name: string; email: string }) {
+    this.name = user.name
+    this.email = user.email
+    this.id = 
+  }
 }

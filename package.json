@@ -9,10 +9,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./dist/server.js",
+    "dev": "nodemon ./dist/server.js",
     "type:watch": "npx tsc --watch"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/node": "^25.0.2",
