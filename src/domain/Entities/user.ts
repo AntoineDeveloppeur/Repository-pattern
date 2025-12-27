@@ -3,10 +3,12 @@ export default class User {
   id: string
   name: string
   email: string
+  hash: string
   accessRight: "administrator" | "moderator" | "user" = "user"
-  constructor(user: { name: string; email: string }) {
+  constructor(user: { name: string; email: string; hash: string }) {
+    this.id = randomUUID()
     this.name = user.name
     this.email = user.email
-    this.id = randomUUID()
+    this.hash = user.hash
   }
 }
