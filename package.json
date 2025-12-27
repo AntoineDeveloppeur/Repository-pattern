@@ -1,0 +1,24 @@
+{
+  "name": "repository-pattern",
+  "version": "1.0.0",
+  "description": "Appréhender le repository Pattern",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./dist/src/presentation/server.js",
+    "dev": "nodemon ./dist/src/presentation/server.js",
+    "type:watch": "npx tsc --watch"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.2",
+    "typescript": "^5.9.3"
+  }
+}
