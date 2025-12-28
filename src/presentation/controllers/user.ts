@@ -1,5 +1,4 @@
 import { createUser } from "../../application/useCases/CreateUser.js"
-import User from "../../domain/Entities/user.js"
 import { Response, Request } from "express"
 import { PostSQLUserRepository } from "../../infrastructure/repository/PostSQLUserRepository.js"
 import {
