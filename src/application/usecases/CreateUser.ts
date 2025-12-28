@@ -1,6 +1,6 @@
 import User from "../../domain/Entities/user.js"
 import { UserRepository } from "../../domain/Repositories/userRepository.js"
-import { EmailAlreadyUsed } from "../../customErrorClass/customErrorClass.js"
+import { EmailAlreadyUsed } from "../../domain/errors/EmailAlreadyUsed.js"
 import hashPassword from "../../domain/utils/hashPassword.js"
 import { UserInfoFromFrontend } from "../../../types/index.js"
 export async function createUser(

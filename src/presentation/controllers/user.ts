@@ -1,11 +1,9 @@
 import { createUser } from "../../application/useCases/CreateUser.js"
 import { Response, Request } from "express"
 import { PostSQLUserRepository } from "../../infrastructure/repository/PostSQLUserRepository.js"
-import {
-  EmailAlreadyUsed,
-  StorageError,
-  UserDoesntExist,
-} from "../../customErrorClass/customErrorClass.js"
+import { UserDoesntExist } from "../../domain/errors/UserDoesntExist.js"
+import { EmailAlreadyUsed } from "../../domain/errors/EmailAlreadyUsed.js"
+import { StorageError } from "../../infrastructure/repository/errors/StorageError.js"
 import modifyPassword from "../../application/useCases/ModifyPassword.js"
 import { UserInfoFromFrontend } from "../../../types/index.js"
 
