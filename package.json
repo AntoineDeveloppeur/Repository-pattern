@@ -11,7 +11,8 @@
     "start": "node ./dist/src/presentation/server.js",
     "dev": "nodemon ./dist/src/presentation/server.js",
     "type:watch": "npx tsc --watch",
-    "lint": "npx eslint"
+    "lint": "npx eslint",
+    "prettier": "npx prettier . --write"
   },
   "dependencies": {
     "express": "^5.2.1",
@@ -24,6 +25,7 @@
     "eslint": "^9.39.2",
     "globals": "^16.5.0",
     "jiti": "^2.6.1",
+    "prettier": "3.7.4",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.50.1"
   }
