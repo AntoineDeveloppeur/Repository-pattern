@@ -6,6 +6,8 @@ import { EmailAlreadyUsed } from "../../domain/errors/EmailAlreadyUsed.js"
 import { StorageError } from "../../infrastructure/repository/errors/StorageError.js"
 import modifyPassword from "../../application/useCases/ModifyPassword.js"
 import { UserInfoFromFrontend } from "../../../types/index.js"
+import { RandomUUIDGenerator } from "../../infrastructure/repository/services/RandomUUIDGenerator.js"
+import { BcryptPasswordHasher } from "../../infrastructure/repository/services/BcryptHashPassword.js"
 
 const userCtrl = {
   handleCreateUser: async (req: Request, res: Response) => {
@@ -13,7 +15,9 @@ const userCtrl = {
     try {
       await createUser(
         req.body as unknown as UserInfoFromFrontend,
-        new PostSQLUserRepository()
+        new PostSQLUserRepository(),
+        new RandomUUIDGenerator(),
+        new BcryptPasswordHasher()
       )
       return res.status(201).json({ message: "utilisateur créé avec succès" })
     } catch (error) {
@@ -32,7 +36,8 @@ const userCtrl = {
       await modifyPassword(
         req.body.email,
         req.body.password,
-        new PostSQLUserRepository()
+        new PostSQLUserRepository(),
+        new BcryptPasswordHasher()
       )
       return res
         .status(200)

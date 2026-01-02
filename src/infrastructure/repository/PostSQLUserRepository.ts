@@ -11,11 +11,10 @@ export class PostSQLUserRepository implements UserRepository {
   async isEmailAlreadyUsed(email: string): Promise<boolean> {
     console.log("email already used!")
     setTimeout(() => {}, 1000)
-    return true
+    return false
   }
   async modifyPassword(id: string, hash: string): Promise<void> {
-    // console.log("password updated")
-    throw new StorageError("error POSTSQL when modify password")
+    console.log("password updated")
     setTimeout(() => {}, 1000)
   }
   async findUserId(email: string): Promise<string> {
