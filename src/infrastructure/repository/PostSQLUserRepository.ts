@@ -1,6 +1,5 @@
 import User from "../../domain/Entities/user.js"
 import { UserRepository } from "../../domain/Repositories/userRepository.js"
-import { StorageError } from "./errors/StorageError.js"
 
 export class PostSQLUserRepository implements UserRepository {
   async create(user: User) {
@@ -13,7 +12,12 @@ export class PostSQLUserRepository implements UserRepository {
     setTimeout(() => {}, 1000)
     return false
   }
-  async modifyPassword(id: string, hash: string): Promise<void> {
+  async getHash(id: string): Promise<string> {
+    console.log("hash found")
+    setTimeout(() => {}, 1000)
+    return "hashedPassword"
+  }
+  async updatePassword(id: string, hash: string): Promise<void> {
     console.log("password updated")
     setTimeout(() => {}, 1000)
   }

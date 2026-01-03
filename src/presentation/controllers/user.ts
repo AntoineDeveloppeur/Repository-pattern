@@ -3,8 +3,9 @@ import { Response, Request } from "express"
 import { PostSQLUserRepository } from "../../infrastructure/repository/PostSQLUserRepository.js"
 import { UserDoesntExist } from "../../domain/errors/UserDoesntExist.js"
 import { EmailAlreadyUsed } from "../../domain/errors/EmailAlreadyUsed.js"
+import { IncorrectCurrentPassword } from "../../domain/errors/IncorrectCurrentPassword.js"
 import { StorageError } from "../../infrastructure/repository/errors/StorageError.js"
-import modifyPassword from "../../application/useCases/ModifyPassword.js"
+import updatePassword from "../../application/useCases/UpdatePassword.js"
 import { UserInfoFromFrontend } from "../../../types/index.js"
 import { RandomUUIDGenerator } from "../../infrastructure/repository/services/RandomUUIDGenerator.js"
 import { BcryptPasswordHasher } from "../../infrastructure/repository/services/BcryptHashPassword.js"
@@ -31,11 +32,12 @@ const userCtrl = {
       return res.status(500).json({ error: "Erreur interne au serveur" })
     }
   },
-  handleModifyPassword: async (req: Request, res: Response) => {
+  handleUpdatePassword: async (req: Request, res: Response) => {
     try {
-      await modifyPassword(
+      await updatePassword(
         req.body.email,
-        req.body.password,
+        req.body.currentPassword,
+        req.body.newPassword,
         new PostSQLUserRepository(),
         new BcryptPasswordHasher()
       )
@@ -44,6 +46,9 @@ const userCtrl = {
         .json({ message: "mot de passé modifié avec succès" })
     } catch (error) {
       if (error instanceof UserDoesntExist) {
+        return res.status(error.status).json({ error: error.message })
+      }
+      if (error instanceof IncorrectCurrentPassword) {
         return res.status(error.status).json({ error: error.message })
       }
       console.error(error)

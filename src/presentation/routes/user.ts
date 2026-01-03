@@ -12,9 +12,9 @@ router.post(
   }
 )
 
-router.post("/modifyPassword", async (req: Request, res: Response) => {
+router.post("/updatePassword", async (req: Request, res: Response) => {
   console.log("dans le router")
-  await userCtrl.handleModifyPassword(req, res)
+  await userCtrl.handleUpdatePassword(req, res)
 })
 
 export default router
