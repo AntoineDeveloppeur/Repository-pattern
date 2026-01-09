@@ -1,8 +1,8 @@
-import { UserRepository } from "../../domain/Repositories/userRepository.js"
+import { UserRepository } from "../../domain/repositories/userRepository.js"
 import { IncorrectCurrentPassword } from "../../domain/errors/IncorrectCurrentPassword.js"
 import { PasswordHasher } from "../../domain/services/PasswordHasher.js"
 
-export default async function updatePassword(
+export async function updatePassword(
   email: string,
   currentPassword: string,
   newPassword: string,

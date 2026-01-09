@@ -2,7 +2,7 @@ import pg from "pg"
 
 const { Pool } = pg
 
-const pool = new Pool({
+export const pool = new Pool({
   host: "localhost",
   port: 5432,
   user: "postgres",
@@ -21,5 +21,3 @@ pool.on("error", (err) => {
   console.error("Unexpected error on idle client", err)
   process.exit(-1)
 })
-
-export default pool

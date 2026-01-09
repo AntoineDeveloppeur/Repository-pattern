@@ -1,8 +1,9 @@
-import User from "../../domain/Entities/user.js"
-import { UserRepository } from "../../domain/Repositories/userRepository.js"
+import { User } from "../../domain/entities/user.js"
+import { UserRepository } from "../../domain/repositories/userRepository.js"
 import type { Pool } from "pg"
 import { UserIdNotFound } from "../../domain/errors/UserIdNotFound.js"
 import { EmailNotFound } from "../../domain/errors/EmailNotFound.js"
+
 export class PostSQLUserRepository implements UserRepository {
   pool: Pool
   constructor(pool: Pool) {

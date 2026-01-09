@@ -1,4 +1,4 @@
-import { PasswordHasher } from "../../domain/services/PasswordHasher"
+import { PasswordHasher } from "../../domain/services/PasswordHasher.js"
 import bcrypt from "bcrypt"
 
 export class BcryptPasswordHasher implements PasswordHasher {

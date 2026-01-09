@@ -4,16 +4,15 @@ import { PostSQLUserRepository } from "../../infrastructure/postSQL/PostSQLUserR
 import { EmailNotFound } from "../../domain/errors/EmailNotFound.js"
 import { EmailAlreadyUsed } from "../../domain/errors/EmailAlreadyUsed.js"
 import { IncorrectCurrentPassword } from "../../domain/errors/IncorrectCurrentPassword.js"
-import updatePassword from "../../application/useCases/UpdatePassword.js"
+import { updatePassword } from "../../application/useCases/UpdatePassword.js"
 import { CreateUserRequest } from "../../application/dto/CreateUserRequest.js"
 import { RandomUUIDGenerator } from "../../infrastructure/services/RandomUUIDGenerator.js"
 import { BcryptPasswordHasher } from "../../infrastructure/services/BcryptHashPassword.js"
-import pool from "../../infrastructure/postSQL/postSQLPool.js"
+import { pool } from "../../infrastructure/postSQL/postSQLPool.js"
 import { UserIdNotFound } from "../../domain/errors/UserIdNotFound.js"
 
 const userCtrl = {
   handleCreateUser: async (req: Request, res: Response) => {
-    console.log("dans le controller")
     try {
       await createUser(
         req.body as unknown as CreateUserRequest, // Mettre en place un validateur de donnée
