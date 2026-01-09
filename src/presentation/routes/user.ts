@@ -7,13 +7,11 @@ router.post(
   "/create",
   validateRequestCreateUser,
   async (req: Request, res: Response) => {
-    console.log("dans le router")
     await userCtrl.handleCreateUser(req, res)
   }
 )
 
 router.patch("/updatePassword", async (req: Request, res: Response) => {
-  console.log("dans le router")
   await userCtrl.handleUpdatePassword(req, res)
 })
 
