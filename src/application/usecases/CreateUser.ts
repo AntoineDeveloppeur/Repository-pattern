@@ -1,27 +1,27 @@
 import User from "../../domain/Entities/user.js"
 import { UserRepository } from "../../domain/Repositories/userRepository.js"
 import { EmailAlreadyUsed } from "../../domain/errors/EmailAlreadyUsed.js"
-import { UserInfoFromFrontend } from "../dto/UserInfoFromFrontend.js"
+import { CreateUserRequest } from "../dto/CreateUserRequest.js"
 import { IdGenerator } from "../../domain/services/IdGenerator.js"
 import { PasswordHasher } from "../../domain/services/PasswordHasher.js"
 
 export async function createUser(
-  userInfoFromFrontend: UserInfoFromFrontend,
+  createUserRequest: CreateUserRequest,
   userRepository: UserRepository,
   idGenerator: IdGenerator,
   passwordHasher: PasswordHasher
 ) {
   const emailAlreadyUsed = await userRepository.isEmailAlreadyUsed(
-    userInfoFromFrontend.email
+    createUserRequest.email
   )
   if (emailAlreadyUsed) {
-    throw new EmailAlreadyUsed(userInfoFromFrontend.email)
+    throw new EmailAlreadyUsed(createUserRequest.email)
   }
   const user = new User({
     id: idGenerator.generate(),
-    name: userInfoFromFrontend.name,
-    email: userInfoFromFrontend.email,
-    hash: passwordHasher.hash(userInfoFromFrontend.password),
+    name: createUserRequest.name,
+    email: createUserRequest.email,
+    hash: passwordHasher.hash(createUserRequest.password),
   })
   await userRepository.create(user)
 }
