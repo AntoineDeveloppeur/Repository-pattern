@@ -31,13 +31,15 @@ Ce projet est un exercice d'apprentissage approfondi visant à maîtriser :
 # 1. Installer les dépendances
 npm install
 
-# 2. Démarrer PostgreSQL avec Docker
+# 2. Démarrer Docker Desktop
+
+# 3. Démarrer PostgreSQL avec Docker
 npm run db:start
 
-# 3. Compiler TypeScript (dans un terminal séparé)
+# 4. Compiler TypeScript (dans un terminal séparé)
 npm run type:watch
 
-# 4. Lancer le serveur (dans un autre terminal)
+# 5. Lancer le serveur (dans un autre terminal)
 npm run dev
 ```
 
